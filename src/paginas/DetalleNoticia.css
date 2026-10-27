@@ -1,0 +1,415 @@
+/* ==================================================
+   DETALLE DE NOTICIA
+================================================== */
+
+.detalle-noticia,
+.noticia-no-encontrada {
+  min-height: 72vh;
+
+  padding: 66px 0 100px;
+
+  background: var(--crema);
+  color: var(--negro);
+}
+
+.detalle-noticia-contenido {
+  max-width: 1120px;
+
+  /*
+   * Contiene correctamente la imagen flotante
+   * sin alterar el flujo del texto.
+   */
+  display: flow-root;
+}
+
+
+/* ==================================================
+   VOLVER
+================================================== */
+
+.enlace-volver {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 8px 10px;
+
+  background: var(--negro);
+  color: var(--amarillo);
+
+  border: 2px solid var(--negro);
+
+  font-family: var(--fuente-pixel);
+  font-size: 6px;
+  line-height: 1.5;
+
+  text-transform: uppercase;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.enlace-volver:hover {
+  transform: translateX(-3px);
+
+  background: var(--cian);
+  color: var(--negro);
+}
+
+
+/* ==================================================
+   ENCABEZADO
+================================================== */
+
+.detalle-noticia-encabezado {
+  max-width: 980px;
+
+  margin: 46px 0 42px;
+}
+
+.detalle-noticia-fecha {
+  display: inline-block;
+
+  padding: 6px 9px;
+
+  background: var(--amarillo);
+
+  border: 2px solid var(--negro);
+
+  font-family: var(--fuente-pixel);
+  font-size: 6px;
+  line-height: 1.5;
+
+  text-transform: uppercase;
+}
+
+.detalle-noticia-encabezado h1,
+.noticia-no-encontrada h1 {
+  margin: 18px 0 16px;
+
+  font-family: var(--fuente-titulo);
+
+  font-size: clamp(
+    44px,
+    7vw,
+    82px
+  );
+
+  line-height: 0.94;
+  letter-spacing: -3px;
+
+  text-transform: uppercase;
+}
+
+.detalle-noticia-resumen {
+  max-width: 760px;
+
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+
+/* ==================================================
+   IMAGEN — DESKTOP
+================================================== */
+
+.detalle-noticia-imagen {
+  /*
+   * La imagen ocupa una parte razonable
+   * de la página y el texto fluye a su lado.
+   */
+  float: left;
+
+  width: 42%;
+  max-width: 470px;
+
+  margin:
+    0
+    52px
+    34px
+    0;
+
+  overflow: hidden;
+
+  background: var(--papel);
+
+  border: var(--borde);
+
+  box-shadow:
+    7px 7px 0 var(--rosa),
+    13px 13px 0 var(--negro);
+}
+
+.detalle-noticia-imagen img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    grayscale(100%)
+    contrast(1.05);
+}
+
+
+/* ==================================================
+   TEXTO DE LA NOTA
+================================================== */
+
+.detalle-noticia-texto {
+  min-width: 0;
+  max-width: none;
+
+  margin: 0;
+}
+
+/*
+ * El primer elemento empieza alineado
+ * con la parte superior de la imagen.
+ */
+
+.detalle-noticia-texto > :first-child {
+  margin-top: 0;
+}
+
+.detalle-noticia-texto p {
+  margin: 0 0 24px;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* ==================================================
+   SUBTÍTULOS
+================================================== */
+
+.detalle-noticia-texto
+.texto-enriquecido-subtitulo {
+  margin: 38px 0 18px;
+
+  font-family: var(--fuente-titulo);
+
+  font-size: clamp(
+    24px,
+    3.2vw,
+    36px
+  );
+
+  line-height: 1;
+  letter-spacing: -1.3px;
+
+  text-transform: uppercase;
+}
+
+
+/* ==================================================
+   LISTAS
+================================================== */
+
+.detalle-noticia-texto
+.texto-enriquecido-lista {
+  margin: 0 0 28px;
+  padding-left: 24px;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.detalle-noticia-texto
+.texto-enriquecido-lista
+li + li {
+  margin-top: 7px;
+}
+
+
+/* ==================================================
+   FORMATO DE TEXTO
+================================================== */
+
+.detalle-noticia-texto strong {
+  font-weight: 700;
+}
+
+.detalle-noticia-texto em {
+  font-style: italic;
+}
+
+
+/* ==================================================
+   VOLVER INFERIOR
+================================================== */
+
+.detalle-noticia-volver {
+  /*
+   * Evita que el botón termine
+   * accidentalmente al costado de la imagen
+   * en notas muy cortas.
+   */
+  clear: both;
+
+  margin-top: 32px;
+}
+
+
+/* ==================================================
+   PROTECCIÓN DE TEXTOS LARGOS
+================================================== */
+
+.detalle-noticia-contenido,
+.detalle-noticia-encabezado,
+.detalle-noticia-texto {
+  min-width: 0;
+}
+
+.detalle-noticia-encabezado h1,
+.detalle-noticia-resumen,
+.detalle-noticia-texto p,
+.detalle-noticia-texto li,
+.detalle-noticia-texto
+.texto-enriquecido-subtitulo {
+  max-width: 100%;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+
+/* ==================================================
+   404
+================================================== */
+
+.noticia-no-encontrada
+.contenedor {
+  padding-top: 50px;
+}
+
+.noticia-no-encontrada p {
+  max-width: 520px;
+
+  margin: 0 0 30px;
+
+  line-height: 1.6;
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 900px) {
+
+  /*
+   * Desde tablet hacia abajo dejamos
+   * el formato completamente vertical.
+   */
+
+  .detalle-noticia-imagen {
+    float: none;
+
+    width: 100%;
+    max-width: 760px;
+
+    margin:
+      0
+      0
+      48px;
+  }
+
+  .detalle-noticia-texto {
+    max-width: 760px;
+
+    margin: 0;
+  }
+
+  .detalle-noticia-volver {
+    margin-top: 28px;
+  }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 680px) {
+
+  .detalle-noticia,
+  .noticia-no-encontrada {
+    padding: 46px 0 72px;
+  }
+
+
+  /* Encabezado */
+
+  .detalle-noticia-encabezado {
+    margin:
+      34px 0
+      32px;
+  }
+
+  .detalle-noticia-encabezado h1,
+  .noticia-no-encontrada h1 {
+    font-size: 42px;
+
+    letter-spacing: -2px;
+  }
+
+  .detalle-noticia-resumen {
+    font-size: 15px;
+  }
+
+
+  /* Imagen */
+
+  .detalle-noticia-imagen {
+    width: 100%;
+    max-width: none;
+
+    margin-bottom: 42px;
+
+    box-shadow:
+      4px 4px 0 var(--rosa),
+      8px 8px 0 var(--negro);
+  }
+
+  .detalle-noticia-imagen img {
+    width: 100%;
+    height: auto;
+  }
+
+
+  /* Texto */
+
+  .detalle-noticia-texto {
+    max-width: none;
+  }
+
+  .detalle-noticia-texto p,
+  .detalle-noticia-texto
+  .texto-enriquecido-lista {
+    font-size: 15px;
+
+    line-height: 1.75;
+  }
+
+  .detalle-noticia-texto
+  .texto-enriquecido-subtitulo {
+    margin-top: 34px;
+
+    font-size: 25px;
+  }
+
+  .detalle-noticia-volver {
+    margin-left: 0;
+  }
+
+}

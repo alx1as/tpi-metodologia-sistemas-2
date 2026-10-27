@@ -1,0 +1,169 @@
+/* ========================================
+   FUENTES
+======================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Syne:wght@700;800&display=swap");
+
+
+/* ========================================
+   VARIABLES GLOBALES
+======================================== */
+
+:root {
+  /* Tipografías */
+  --fuente-texto: "Inter", Arial, Helvetica, sans-serif;
+  --fuente-titulo: "Archivo", sans-serif;
+  --fuente-marca: "Syne", sans-serif;
+  --fuente-mono: "DM Mono", monospace;
+  --fuente-pixel: "Press Start 2P", cursive;
+
+  /* Neutros */
+  --negro: #211c1d;
+  --negro-rgb: 33, 28, 29;
+  --negro-suave: #2d2728;
+
+  --papel: #f8f0de;
+  --crema: #efe2c5;
+
+  --blanco: #fffaf2;
+  --blanco-rgb: 255, 250, 242;
+
+  /* Colores fuertes */
+  --amarillo: #f1e400;
+  --cian: #32b7d8;
+  --rosa: #ff4d9c;
+  --verde: #98c92d;
+  --verde-oscuro: #557138;
+  --naranja: #ef7a2c;
+  --violeta: #7144a6;
+  --rojo: #f0574f;
+
+  /* Fondos suaves */
+  --durazno-suave: #e7bd98;
+  --lavanda-suave: #ded3e4;
+  --menta-suave: #bfd8ca;
+  --azul-suave: #bfd5df;
+
+  /* Bordes */
+  --borde: 3px solid var(--negro);
+
+  font-family: var(--fuente-texto);
+  color: var(--negro);
+  background: var(--papel);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  background: var(--papel);
+  color: var(--negro);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+::selection {
+  background: var(--rosa);
+  color: var(--blanco);
+}
+
+
+/* ========================================
+   CONTENEDOR GENERAL
+======================================== */
+
+.contenedor {
+  width: min(1240px, calc(100% - 60px));
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   ANCLAS
+======================================== */
+
+#radio,
+#publicidad,
+#noticias {
+  scroll-margin-top: 78px;
+}
+
+
+/* ========================================
+   RESPONSIVE GLOBAL
+======================================== */
+
+@media (max-width: 1100px) {
+  .contenedor {
+    width: min(calc(100% - 40px), 1240px);
+  }
+}
+
+@media (max-width: 680px) {
+  .contenedor {
+    width: min(calc(100% - 26px), 1240px);
+  }
+
+  #radio,
+  #publicidad,
+  #noticias {
+    scroll-margin-top: 66px;
+  }
+}
+
+
+/* ========================================
+   MOVIMIENTO REDUCIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

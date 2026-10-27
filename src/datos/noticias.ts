@@ -1,0 +1,29 @@
+import type { Noticia } from "../tipos/Noticia";
+import datosNoticias from "./noticias.json";
+
+export const noticias =
+  datosNoticias as Noticia[];
+
+export function obtenerNoticiasPublicadas() {
+  return [...noticias]
+    .filter((noticia) => noticia.publicada)
+    .sort((a, b) =>
+      b.fecha.localeCompare(a.fecha)
+    );
+}
+
+export function obtenerUltimasNoticias(
+  cantidad = 3
+) {
+  return obtenerNoticiasPublicadas()
+    .slice(0, cantidad);
+}
+
+export function obtenerNoticiaPorSlug(
+  slug: string
+) {
+  return obtenerNoticiasPublicadas()
+    .find((noticia) =>
+      noticia.slug === slug
+    );
+}
