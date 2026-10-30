@@ -12,7 +12,8 @@
   "dependencies": {
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.2"
+    "react-router-dom": "^7.18.2",
+    "lucide-react": "^0.468.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -28,5 +29,5 @@
     "typescript-eslint": "^8.65.0",
     "vite": "^8.2.0"
   },
-  "description": "Extracción mínima de noticias de El Club de la Nostalgia, sin comentarios ni likes implementados."
+  "description": "Módulo académico de noticias con comentarios y reacciones locales."
 }

@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 
 import TextoEnriquecido from "../componentes/TextoEnriquecido";
+import InteraccionNoticia from "../componentes/InteraccionNoticia";
 import { obtenerNoticiaPorSlug } from "../datos/noticias";
 import { formatearFecha } from "../utilidades/formatearFecha";
 
@@ -110,6 +111,8 @@ function DetalleNoticia() {
           className="detalle-noticia-texto"
         />
 
+
+        <InteraccionNoticia slug={noticia.slug} />
 
         <Link
           to="/noticias"
