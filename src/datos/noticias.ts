@@ -22,8 +22,9 @@ export function obtenerUltimasNoticias(
 export function obtenerNoticiaPorSlug(
   slug: string
 ) {
-  return obtenerNoticiasPublicadas()
-    .find((noticia) =>
+  return noticias.find(
+    (noticia) =>
+      noticia.publicada &&
       noticia.slug === slug
-    );
+  );
 }
