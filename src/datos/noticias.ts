@@ -1,8 +1,7 @@
 import type { Noticia } from "../tipos/Noticia";
 import datosNoticias from "./noticias.json";
 
-export const noticias =
-  datosNoticias as Noticia[];
+export const noticias: Noticia[] = datosNoticias;
 
 export function obtenerNoticiasPublicadas() {
   return [...noticias]
@@ -22,8 +21,9 @@ export function obtenerUltimasNoticias(
 export function obtenerNoticiaPorSlug(
   slug: string
 ) {
-  return obtenerNoticiasPublicadas()
-    .find((noticia) =>
+  return noticias.find(
+    (noticia) =>
+      noticia.publicada &&
       noticia.slug === slug
-    );
+  );
 }
