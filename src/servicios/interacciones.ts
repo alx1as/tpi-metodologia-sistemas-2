@@ -76,7 +76,12 @@ const PALABRAS_BLOQUEADAS = [
   "pelotuda",
 ];
 
-function validarComentario(nombre: string, texto: string) {
+interface DatosValidacionComentario {
+  nombre: string;
+  texto: string;
+}
+
+function validarComentario({ nombre, texto }: DatosValidacionComentario) {
   const nombreLimpio = nombre.trim();
   const textoLimpio = texto.trim();
 
@@ -110,7 +115,7 @@ export async function publicarComentario(
     respuestaA?: string;
   }
 ): Promise<InteraccionesNoticia> {
-  validarComentario(entrada.nombre, entrada.texto);
+  validarComentario(entrada);
 
   if (API) {
     const respuesta = await fetch(`${API}/noticias/${encodeURIComponent(slug)}/comentarios`, {
