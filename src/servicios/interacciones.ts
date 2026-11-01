@@ -1,3 +1,5 @@
+import { leerLocal, guardarLocal } from "./almacenInteracciones";
+
 export type AvatarComentario =
   | "cassette"
   | "ovni"
@@ -25,24 +27,7 @@ export interface InteraccionesNoticia {
 }
 
 const API = import.meta.env.VITE_INTERACCION_API_URL?.replace(/\/$/, "");
-const CLAVE = "club-nostalgia-interacciones-demo";
 const CLAVE_ULTIMO_COMENTARIO = "club-nostalgia-ultimo-comentario";
-
-interface AlmacenLocal {
-  [slug: string]: InteraccionesNoticia;
-}
-
-function leerLocal(): AlmacenLocal {
-  try {
-    return JSON.parse(localStorage.getItem(CLAVE) || "{}") as AlmacenLocal;
-  } catch {
-    return {};
-  }
-}
-
-function guardarLocal(datos: AlmacenLocal) {
-  localStorage.setItem(CLAVE, JSON.stringify(datos));
-}
 
 function estadoInicial(): InteraccionesNoticia {
   return { likes: 0, meGusta: false, comentarios: [] };
