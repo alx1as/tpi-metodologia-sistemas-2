@@ -1,0 +1,38 @@
+EVIDENCIA · R1 EXTRACT METHOD · VERIFICACIÓN TÉCNICA
+==================================================
+Proyecto:   tpi-ms2-noticias-base@0.1.0
+Rama:       refactor/comentarios (después de R1, antes del commit)
+Integrante: Eugenia Demarchi
+Fecha:      02/11/2026
+Entorno:    Windows 10 (10.0.19045.6466) · Vite v8.2.1
+Cambio:     extracción de agruparRespuestas() en InteraccionNoticia.tsx
+            (git diff --stat: 1 file changed, 19 insertions(+), 3 deletions(-))
+
+
+1) npm run build   (tsc -b && vite build)
+--------------------------------------------------
+> tpi-ms2-noticias-base@0.1.0 build
+> tsc -b && vite build
+
+vite v8.2.1 building client environment for production...
+✓ 1588 modules transformed.
+computing gzip size...
+dist/index.html                   0.56 kB │ gzip:  0.35 kB
+dist/assets/index-Ynkq4UXV.css   17.68 kB │ gzip:  4.15 kB
+dist/assets/index-C3-hPw17.js   259.90 kB │ gzip: 85.90 kB
+
+✓ built in 1.02s
+
+Resultado: OK · compilación TypeScript y build de producción sin errores.
+Mismo número de módulos que el estado inicial (1588). El CSS no cambió
+(mismo hash Ynkq4UXV): la presentación visual se mantiene.
+
+
+2) npm run lint   (eslint .)
+--------------------------------------------------
+> tpi-ms2-noticias-base@0.1.0 lint
+> eslint .
+
+(sin salida)
+
+Resultado: OK · ESLint no reportó errores ni advertencias.

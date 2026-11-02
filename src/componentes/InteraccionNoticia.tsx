@@ -3,7 +3,7 @@ import {
   MessageCircle,
   Send,
 } from "lucide-react";
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   alternarLike,
   obtenerInteracciones,
@@ -52,6 +52,20 @@ function tiempoRelativo(fecha: string) {
   return `hace ${dias} d`;
 }
 
+function agruparRespuestas(comentarios: ComentarioNoticia[]) {
+  const respuestasPorComentario = new Map<ComentarioNoticia["id"], ComentarioNoticia[]>();
+
+  for (const comentario of comentarios) {
+    if (!comentario.respuestaA) continue;
+
+    const respuestas = respuestasPorComentario.get(comentario.respuestaA) ?? [];
+    respuestas.push(comentario);
+    respuestasPorComentario.set(comentario.respuestaA, respuestas);
+  }
+
+  return respuestasPorComentario;
+}
+
 function InteraccionNoticia({ slug }: Propiedades) {
   const [estado, setEstado] = useState<InteraccionesNoticia>({
     likes: 0,
@@ -64,6 +78,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
   const [avatar, setAvatar] = useState<AvatarComentario>("cassette");
   const [respuestaA, setRespuestaA] = useState<ComentarioNoticia | null>(null);
   const [mensaje, setMensaje] = useState("");
+  const formularioRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     let activo = true;
@@ -80,6 +95,11 @@ function InteraccionNoticia({ slug }: Propiedades) {
 
   const comentariosRaiz = useMemo(
     () => estado.comentarios.filter((comentario) => !comentario.respuestaA),
+    [estado.comentarios]
+  );
+
+  const respuestasPorComentario = useMemo(
+    () => agruparRespuestas(estado.comentarios),
     [estado.comentarios]
   );
 
@@ -114,9 +134,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
   }
 
   function renderComentario(comentario: ComentarioNoticia, esRespuesta = false) {
-    const respuestas = estado.comentarios.filter(
-      (item) => item.respuestaA === comentario.id
-    );
+    const respuestas = respuestasPorComentario.get(comentario.id) ?? [];
 
     return (
       <div
@@ -141,7 +159,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
               className="comentario-responder"
               onClick={() => {
                 setRespuestaA(comentario);
-                document.getElementById("form-comentario")?.scrollIntoView({
+                formularioRef.current?.scrollIntoView({
                   behavior: "smooth",
                   block: "center",
                 });
@@ -182,7 +200,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
       </div>
 
       <div className="interaccion-grilla">
-        <form id="form-comentario" className="form-comentario" onSubmit={enviarComentario}>
+        <form ref={formularioRef} className="form-comentario" onSubmit={enviarComentario}>
           <span className="form-etiqueta">DEJÁ TU COMENTARIO</span>
 
           <label>

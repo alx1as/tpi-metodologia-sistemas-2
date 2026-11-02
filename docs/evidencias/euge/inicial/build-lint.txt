@@ -1,0 +1,34 @@
+EVIDENCIA · ESTADO INICIAL · VERIFICACIÓN TÉCNICA
+==================================================
+Proyecto:   tpi-ms2-noticias-base@0.1.0
+Rama:       refactor/comentarios (antes de cualquier cambio)
+Integrante: Eugenia Demarchi
+Fecha:      02/11/2026
+Entorno:    Windows 10 (10.0.19045.6466) · Vite v8.2.1
+
+
+1) npm run build   (tsc -b && vite build)
+--------------------------------------------------
+> tpi-ms2-noticias-base@0.1.0 build
+> tsc -b && vite build
+
+vite v8.2.1 building client environment for production...
+✓ 1588 modules transformed.
+computing gzip size...
+dist/index.html                   0.56 kB │ gzip:  0.36 kB
+dist/assets/index-Ynkq4UXV.css   17.68 kB │ gzip:  4.15 kB
+dist/assets/index-CfOZX7d6.js   259.73 kB │ gzip: 85.84 kB
+
+✓ built in 954ms
+
+Resultado: OK · compilación TypeScript y build de producción sin errores.
+
+
+2) npm run lint   (eslint .)
+--------------------------------------------------
+> tpi-ms2-noticias-base@0.1.0 lint
+> eslint .
+
+(sin salida)
+
+Resultado: OK · ESLint no reportó errores ni advertencias.
