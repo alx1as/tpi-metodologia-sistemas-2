@@ -3,7 +3,7 @@ import {
   MessageCircle,
   Send,
 } from "lucide-react";
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   alternarLike,
   obtenerInteracciones,
@@ -78,6 +78,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
   const [avatar, setAvatar] = useState<AvatarComentario>("cassette");
   const [respuestaA, setRespuestaA] = useState<ComentarioNoticia | null>(null);
   const [mensaje, setMensaje] = useState("");
+  const formularioRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     let activo = true;
@@ -101,7 +102,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
     () => agruparRespuestas(estado.comentarios),
     [estado.comentarios]
   );
-  
+
   async function manejarLike() {
     try {
       setMensaje("");
@@ -158,7 +159,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
               className="comentario-responder"
               onClick={() => {
                 setRespuestaA(comentario);
-                document.getElementById("form-comentario")?.scrollIntoView({
+                formularioRef.current?.scrollIntoView({
                   behavior: "smooth",
                   block: "center",
                 });
@@ -199,7 +200,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
       </div>
 
       <div className="interaccion-grilla">
-        <form id="form-comentario" className="form-comentario" onSubmit={enviarComentario}>
+        <form ref={formularioRef} className="form-comentario" onSubmit={enviarComentario}>
           <span className="form-etiqueta">DEJÁ TU COMENTARIO</span>
 
           <label>
