@@ -52,6 +52,20 @@ function tiempoRelativo(fecha: string) {
   return `hace ${dias} d`;
 }
 
+function agruparRespuestas(comentarios: ComentarioNoticia[]) {
+  const respuestasPorComentario = new Map<ComentarioNoticia["id"], ComentarioNoticia[]>();
+
+  for (const comentario of comentarios) {
+    if (!comentario.respuestaA) continue;
+
+    const respuestas = respuestasPorComentario.get(comentario.respuestaA) ?? [];
+    respuestas.push(comentario);
+    respuestasPorComentario.set(comentario.respuestaA, respuestas);
+  }
+
+  return respuestasPorComentario;
+}
+
 function InteraccionNoticia({ slug }: Propiedades) {
   const [estado, setEstado] = useState<InteraccionesNoticia>({
     likes: 0,
@@ -83,6 +97,11 @@ function InteraccionNoticia({ slug }: Propiedades) {
     [estado.comentarios]
   );
 
+  const respuestasPorComentario = useMemo(
+    () => agruparRespuestas(estado.comentarios),
+    [estado.comentarios]
+  );
+  
   async function manejarLike() {
     try {
       setMensaje("");
@@ -114,9 +133,7 @@ function InteraccionNoticia({ slug }: Propiedades) {
   }
 
   function renderComentario(comentario: ComentarioNoticia, esRespuesta = false) {
-    const respuestas = estado.comentarios.filter(
-      (item) => item.respuestaA === comentario.id
-    );
+    const respuestas = respuestasPorComentario.get(comentario.id) ?? [];
 
     return (
       <div
