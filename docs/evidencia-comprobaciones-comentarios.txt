@@ -1,0 +1,27 @@
+TPI Metodología de Sistemas II — Verificación técnica de Comentarios
+Fecha: 2026-11-03
+Fuente: TPI_MS2_Noticias(1).zip; versión incluida en commit 026e803.
+Archivo: src/componentes/InteraccionNoticia.tsx
+Commits revisados: 321aad8, 513ec47
+
+Checks ejecutados sobre copia aislada del ZIP:
+1. node node_modules/typescript/bin/tsc -b  -> exit 0
+2. node node_modules/vite/bin/vite.js build -> exit 0
+   vite v8.2.1 / 1589 modules transformed / built in 510ms
+3. node node_modules/eslint/bin/eslint.js . -> exit 0
+
+Pruebas puntuales sobre agruparRespuestas() de InteraccionNoticia.tsx:
+OK - Colección vacía => Map vacío
+OK - Dos respuestas al mismo padre conservan el orden
+OK - Distintos padres => respuestas separadas
+OK - Respuesta sin hijos => array vacío vía get ?? []
+Total: 4 pruebas puntuales correctas
+
+Evidencia documental ya presente en el repo:
+docs/evidencias/euge/inicial/
+docs/evidencias/euge/r1-extract-method/
+docs/evidencias/euge/r2-useref/
+docs/evidencias/euge/final/
+
+Alcance: compilación, análisis estático, pruebas de la función agrupadora y
+revisión de diffs/documentación. No se efectuó prueba manual nueva en navegador.
