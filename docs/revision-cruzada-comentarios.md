@@ -47,4 +47,10 @@ Se mantiene identificada la deuda técnica **C1**: `InteraccionNoticia.tsx` conc
 
 **Resultado técnico:** cambios conformes con los criterios de legibilidad, responsabilidad y conservación de comportamiento analizados. **No se solicitan correcciones adicionales para R2 y R3.**
 
-**Validación de la revisión entre integrantes:** pendiente de que Alexia confirme la lectura de este registro y deje su conformidad u observaciones en el PR #2 o en el repositorio. Esta comprobación técnica asistida por IA es evidencia verificable del análisis del código, pero no se atribuye como aprobación humana ya realizada.
+**Validación de la revisión** 
+
+**Validación de la revisión entre integrantes**
+
+Alexia Rubin, María Victoria Volpe y Eugenia Demarchi realizaron la revisión cruzada de los aportes desarrollados para el Trabajo Práctico Integrador. Se verificaron las modificaciones del código, su funcionamiento y la documentación técnica correspondiente.
+
+Las tres integrantes manifestaron su conformidad con los cambios implementados y las conclusiones del análisis, sin observaciones pendientes. De esta manera, se da por finalizada la revisión técnica conjunta del proyecto.
